@@ -9,9 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MessageSender.Infrastructure;
-
-namespace MessageSender
+using MessageReceiver.Service;
+namespace MessageReceiver
 {
     public class Startup
     {
@@ -25,8 +24,9 @@ namespace MessageSender
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<SenderService>();
             services.AddControllers();
+            // register the background service in the environment
+            services.AddHostedService<BackgroundQueueService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

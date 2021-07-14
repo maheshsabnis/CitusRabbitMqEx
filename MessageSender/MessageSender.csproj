@@ -5,4 +5,20 @@
   </PropertyGroup>
 
 
+  <ItemGroup>
+    <None Remove="RabbitMQ.Client" />
+    <None Remove="Controllers\" />
+    <None Remove="Infrastructure\" />
+    <None Remove="Models\" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>

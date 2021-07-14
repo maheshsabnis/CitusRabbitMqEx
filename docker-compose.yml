@@ -1,0 +1,28 @@
+version: "3.6"
+services: 
+  rabbitmq:
+      container_name: emessage-rabbitmq
+      ports: 
+          - 15672:15672
+          - 5672:5672
+      environment: 
+          - RABBITMQ_DEFAULT_USER=guest
+          - RABBITMQ_DEFAULT_PASS=guest
+      image: rabbitmq:3-management
+  senderapi:
+      container_name: senderapi
+      ports: 
+          - 9001:80
+      build: MessageSender
+      restart: on-failure
+      depends_on: 
+          - rabbitmq
+  receiverapi:
+      container_name: receiverapi
+      ports: 
+          - 9002:80
+      build: MessageReceiver
+      restart: on-failure
+      depends_on: 
+          - rabbitmq        
+
